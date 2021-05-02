@@ -1,7 +1,12 @@
 const Backbone = require('backbone');
-module.exports = function () {
-  return Backbone;
-};
-// https://github.com/pipefishbook/ch_1
-// https://github.com/pipefishbook
-// use command browserify -r ./app/main:app > static/bundle.js
+const Movies = require('collections/movies');
+const data = require('../movies.json');
+const Monitor = require('./monitor');
+
+// module.exports = function () {
+//   return Backbone;
+// };
+const movies = new Movies(data);
+const monitor = new Monitor(movies);
+
+module.exports = movies;

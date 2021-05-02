@@ -1,4 +1,51 @@
 require=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+const Backbone = require('backbone');
+const Movie = require('models/movie');
+const Movies = Backbone.Collection.extend({
+  model: Movie,
+  // // Unselect all models
+  // resetSelected = function() {
+  //   this.each(function(model) {
+  //     model.set({"selected": false}, {silent: true});
+  //   });
+  // }
+});
+
+module.exports = Movies;
+
+},{"backbone":6,"models/movie":2}],2:[function(require,module,exports){
+const Backbone = require('Backbone');
+const Movie = Backbone.Model.extend({
+  defaults: {
+    title: 'default',
+    year: 0,
+    description: 'empty',
+    selected: false,
+  },
+});
+module.exports = Movie;
+
+},{"Backbone":5}],3:[function(require,module,exports){
+const _ = require('underscore');
+const Backbone = require('backbone');
+
+const Monitor = function (collection) {
+  _.extend(this, Backbone.Events);
+  this.listenTo(collection, 'all', function (eventName) {
+    console.log(eventName);
+  });
+};
+
+module.exports = Monitor;
+
+},{"backbone":6,"underscore":8}],4:[function(require,module,exports){
+module.exports=[
+  { "id": 1, "title": "The Artist" },
+  { "id": 2, "title": "Taxi Driver" },
+  { "id": 3, "title": "La Dolce Vita" }
+]
+
+},{}],5:[function(require,module,exports){
 (function (global){(function (){
 //     Backbone.js 1.4.0
 
@@ -2098,7 +2145,9 @@ require=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c=
 });
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":2,"underscore":3}],2:[function(require,module,exports){
+},{"jquery":7,"underscore":8}],6:[function(require,module,exports){
+arguments[4][5][0].apply(exports,arguments)
+},{"dup":5,"jquery":7,"underscore":8}],7:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.6.0
  * https://jquery.com/
@@ -12981,7 +13030,7 @@ if ( typeof noGlobal === "undefined" ) {
 return jQuery;
 } );
 
-},{}],3:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function (global){(function (){
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -15029,10 +15078,16 @@ return jQuery;
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],"app":[function(require,module,exports){
 const Backbone = require('backbone');
-module.exports = function () {
-  return Backbone;
-};
-// https://github.com/pipefishbook/ch_1
-// https://github.com/pipefishbook
+const Movies = require('collections/movies');
+const data = require('../movies.json');
+const Monitor = require('./monitor');
 
-},{"backbone":1}]},{},[]);
+// module.exports = function () {
+//   return Backbone;
+// };
+const movies = new Movies(data);
+const monitor = new Monitor(movies);
+
+module.exports = movies;
+
+},{"../movies.json":4,"./monitor":3,"backbone":6,"collections/movies":1}]},{},[]);
