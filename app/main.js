@@ -1,12 +1,15 @@
 const Backbone = require('backbone');
-const Movies = require('collections/movies');
-const data = require('../movies.json');
-const Monitor = require('./monitor');
+const $ = require('jquery-untouched');
+Backbone.$ = $;
 
-// module.exports = function () {
-//   return Backbone;
-// };
-const movies = new Movies(data);
-const monitor = new Monitor(movies);
+const MoviesRouter = require('./routers/movies');
 
-module.exports = movies;
+$(document).ready(() => {
+  console.log('init');
+  const router = new MoviesRouter({ el: $('#movies') });
+
+  Backbone.history.start({
+    pushState: true,
+    root: '/',
+  });
+});
