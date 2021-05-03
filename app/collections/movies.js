@@ -1,7 +1,13 @@
 const Backbone = require('backbone');
 const Movie = require('models/movie');
+
 const Movies = Backbone.Collection.extend({
   model: Movie,
+
+  getSelected: function () {
+    return this.pluck('selected').indexOf(true);
+  },
+
   // Unselect all models
   resetSelected: function () {
     this.each(function (model) {

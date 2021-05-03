@@ -1,7 +1,7 @@
 .movie {
-  width: 90px;
-  height: 90px;
-  background-color: #3d9970;
+  width: 390px;
+  height: 190px;
+  background-color: #3d7c99;
   color: white;
   margin: 10px;
 }
@@ -9,16 +9,32 @@
 .details {
   width: 240px;
   margin: 10px;
-  background-color: blue;
+  background-color: rgb(120, 209, 245);
   color: white;
   float: left;
 }
 
 .selected {
-  border: 2px #01ff70 solid;
+  border: 2px #2678d6 solid;
 }
 
 #movies {
   width: 120px;
   float: left;
+}
+
+#movies {
+  width: 720px;
+}
+
+#overview {
+  width: 200px;
+  float: left;
+}
+
+#details {
+  width: 400px;
+  float: right;
+  border: 3px black solid;
+  padding: 20px;
 }
