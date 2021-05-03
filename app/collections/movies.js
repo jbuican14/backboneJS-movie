@@ -20,9 +20,3 @@ const Movies = Backbone.Collection.extend({
 });
 
 module.exports = Movies;
-
-// Test case
-// browserify -r ./app/main.js:app > static/bundle.js (on the root)
-// moives.selectByID(2)
-// movies.get(2).get('selected'); --> retrieve the model from the collection and then
-//  retrieves the value of the 'selected' attribute from the model

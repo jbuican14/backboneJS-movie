@@ -4,7 +4,6 @@ const Movie = Backbone.Model.extend({
     title: 'default',
     year: 0,
     description: 'empty',
-    selected: false,
   },
 });
 module.exports = Movie;
