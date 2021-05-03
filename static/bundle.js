@@ -3,15 +3,29 @@ const Backbone = require('backbone');
 const Movie = require('models/movie');
 const Movies = Backbone.Collection.extend({
   model: Movie,
-  // // Unselect all models
-  // resetSelected = function() {
-  //   this.each(function(model) {
-  //     model.set({"selected": false}, {silent: true});
-  //   });
-  // }
+  // Unselect all models
+  resetSelected: function () {
+    this.each(function (model) {
+      model.set({ selected: false });
+    });
+  },
+
+  // Select a specific model from the collecton
+  selectByID: function (id) {
+    this.resetSelected();
+    const movie = this.get(id);
+    movie.set({ selected: true });
+
+    return movie.id;
+  },
 });
 
 module.exports = Movies;
+
+// Test case
+// browserify -r ./app/main.js:app > static/bundle.js (on the root)
+// moives.selectByID(2)
+// movies.get(2).get('selected'); --> retrieve the model from the collection and then retrieves the value of the 'selected' attribute from the model
 
 },{"backbone":6,"models/movie":2}],2:[function(require,module,exports){
 const Backbone = require('Backbone');
@@ -41,8 +55,8 @@ module.exports = Monitor;
 },{"backbone":6,"underscore":8}],4:[function(require,module,exports){
 module.exports=[
   { "id": 1, "title": "The Artist" },
-  { "id": 2, "title": "Taxi Driver" },
-  { "id": 3, "title": "La Dolce Vita" }
+  { "id": 2, "title": "Matrix" },
+  { "id": 3, "title": "Captain America" }
 ]
 
 },{}],5:[function(require,module,exports){
