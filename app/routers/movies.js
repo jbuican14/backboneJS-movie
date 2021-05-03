@@ -24,13 +24,19 @@ const MoviesRouter = Backbone.Router.extend({
 
   initialize: function (options) {
     this.movies = movies;
-    this.moviesList = new MoviesList({
-      el: options.el,
-      collection: movies,
-    });
+    // this.moviesList = new MoviesList({
+    //   el: options.el,
+    //   collection: movies,
+    // });
 
-    _.extend(this.moviesList, { router: this });
-    this.moviesList.render();
+    this.layout = Layout.getInstance({
+      el: '#movies',
+      router: this,
+    });
+    this.layout.render();
+
+    // _.extend(this.moviesList, { router: this });
+    // this.moviesList.render();
   },
 });
 
