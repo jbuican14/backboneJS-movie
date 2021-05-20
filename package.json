@@ -13,5 +13,8 @@
     "jquery": "^3.6.0",
     "jquery-untouched": "^1.10.2",
     "pushstate-server": "^3.1.0"
+  },
+  "devDependencies": {
+    "jstify": "^0.14.0"
   }
 }
