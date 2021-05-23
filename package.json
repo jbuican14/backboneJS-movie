@@ -10,10 +10,18 @@
   "license": "ISC",
   "dependencies": {
     "backbone": "^1.4.0",
+    "brfs": "^2.0.2",
     "browserify-eco": "^0.2.4",
     "eco": "^1.1.0-rc-3",
+    "grunt": "^1.4.0",
+    "grunt-browserify": "^6.0.0",
+    "grunt-contrib-handlebars": "^3.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "handlebars": "^4.7.7",
     "jquery": "^3.6.0",
     "jquery-untouched": "^1.10.2",
+    "lslint": "^0.0.0",
+    "nodemon": "^2.0.7",
     "pushstate-server": "^3.1.0"
   },
   "devDependencies": {
